@@ -76,7 +76,19 @@ nav {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.old-price {
+    color: #999; /* لون باهت للسعر القديم */
+    margin-left: 10px;
+}
 
+.new-price {
+    color: var(--secondary); /* لون جذاب للسعر الجديد */
+    font-weight: bold;
+}
+
+del {
+    text-decoration: line-through; /* تأكد من ظهور الخط */
+}
 .nav-links {
     display: flex;
     list-style: none;
@@ -369,6 +381,7 @@ nav {
 
 .tab-content.active {
     display: block;
+    display: block !important;
 }
 
 .level-card {
