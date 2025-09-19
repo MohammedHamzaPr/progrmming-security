@@ -1,317 +1,273 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programming Security - البرمجة في الأمن السيبراني</title>
-    <link href="css/styles.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>كورس Programming Security - دورة كاملة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-    <!-- تأثيرات الأمان في الخلفية -->
-    <div class="security-effects" id="securityEffects"></div>
-    
-    <!-- شريط التنقل -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-shield-alt"></i>
-                <h1>Programming Security</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#about">نبذة عن الكورس</a></li>
-                <li><a href="#levels">المستويات</a></li>
-                <li><a href="#pricing">السعر</a></li>
-                <li><a href="#contact">اتصل بنا</a></li>
-            </ul>
-            <a href="#pricing" class="cta-button">سجل الآن</a>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">PS</div>
+        <div>
+          <h1>كورس Programming Security</h1>
+          <div style="color:var(--muted);font-size:13px">5 مستويات — تعليم عملي في الأمن السيبراني والبرمجة</div>
         </div>
-    </nav>
-    
-    <!-- قسم الهيرو -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <br>
-            <br>
-            <br>
-            <h2>أتقن الأمن السيبراني باستخدام البرمجة</h2>
-            <p>كورس متكامل يجعلك محترفًا في البرمجة والحماية واختبار الاختراق يبدء معك من لغة C++ في المستوى الأول وينتهي في بايثون ويجعلك تقوم ببناء الأدوات الخاصة بك في اختراق الاختراق وبفضل الكورس سوف يكون اكثر من لغة برمجة</p>
-            <div class="hero-buttons">
-                <a href="#levels" class="cta-button">استعرض المحتوى</a>
-                <a href="#pricing" class="secondary-button">احجز مقعدك الآن</a>
-            </div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="#enroll">اشترك الآن</a>
+        <a class="btn secondary" href="#levels">المنهج</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="card summary">
+        <h2>أمن متكامل · برمجة عملية · خبرة عملية</h2>
+        <p>تعلم كيفية حماية الأنظمة والشبكات باستخدام أدوات قوية، من تشفير البيانات وحتى اكتشاف الثغرات. هذه الدورة تجمع لغات برمجة متعددة وتعلمك إنشاء أدوات عملية في مجال CyberSecurity.</p>
+
+        <div class="highlights">
+          <div class="feature"><div class="dot"></div><div><strong>برمجة عملية</strong><div class="muted">ستبني أدوات حقيقية: ماسحات ثغرات، أدوات تشفير، keyloggers للتعلّم فقط، وغير ذلك.</div></div></div>
+          <div class="feature"><div class="dot"></div><div><strong>خبرة عملية</strong><div class="muted">محتوى من خبراء قطاع الأمن السيبراني مع تطبيقات عملية.</div></div></div>
+          <div class="feature"><div class="dot"></div><div><strong>دروس جديدة دورياً</strong><div class="muted">تحديث مستمر لمحتوى الدورة لتغطية تقنيات حديثة.</div></div></div>
         </div>
+
+        <div style="margin-top:14px;display:flex;gap:8px;align-items:center">
+          <a class="btn" href="#pricing">سعر العرض</a>
+          <a class="btn secondary" href="#contact">تواصل معنا</a>
+        </div>
+
+      </div>
+
+      <aside class="card price-box">
+        <div class="badge">الدورة الأولى في الوطن العربي</div>
+        <div class="price">$200 <span class="old">$300</span></div>
+        <div style="color:var(--muted);margin-top:8px">5 مستويات · 80+ درس عملي · شهادة عند الانتهاء · وصول مدى الحياة</div>
+        <a id="enroll" class="btn" style="margin-top:12px;display:inline-block" href="https://t.me/lw_w7">اشترك الآن عبر التليكرام</a>
+      </aside>
     </section>
-    
-    <!-- قسم نبذة عن الكورس -->
-    <section class="about-course" id="about">
-        <div class="section-container">
-            <div class="section-title">
-                <h3>لماذا هذا الكورس؟</h3>
-            </div>
-            <div class="about-content">
-                <div class="about-card">
-                    <i class="fas fa-lock"></i>
-                    <h4>أمن متكامل</h4>
-                    <p>تعلم كيفية حماية الأنظمة والشبكات باستخدام أدوات قوية، من تشفير البيانات وحتى اكتشاف الثغرات.</p>
-                </div>
-                <div class="about-card">
-                    <i class="fas fa-laptop-code"></i>
-                    <h4>برمجة عملية</h4>
-                    <p>ليست مجرد نظريات! ستقوم ببناء أدوات حقيقية مثل الماسح الضوئي للثغرات، أدوات التشفير، وأنظمة المراقبة الأمنية.</p>
-                </div>
-                <div class="about-card">
-                    <i class="fas fa-briefcase"></i>
-                    <h4>خبرة عملية</h4>
-                    <p>محتوى معد من قبل خبراء في مجال الأمن السيبراني مع تطبيقات عملية</p>
-                </div>
-                <div class="about-card">
-                    <i class="fas fa-trophy"></i>
-                    <h4>الدورة الأولى في الوطن العربي</h4>
-                    <p>هذه الدورة هي الدورة الأولى من نوعها في العالم وفي مجال البرمجة والأمن السيبراني حيث تأخذ في رحلة من تعلم لغات برمجة متعددة مثل C++, Java, Python وتعلمك برمجة والأدوات المستخدمة في اختبار الاختراق وتريك ماذا يحصل في الخلفية عند استخدام ادأة حيث تجعلك تفهم ماذا يحصل في الخلفية وليس فقط تعلمك البرمجة او استخدام الأدوات والدورة موجهة للمبتدئين والمحترفين لهذا هي خيارك الأفضل</p>
-                </div>
-                <div class="about-card">
-                    <i class="fas fa-hands-helping"></i>
-                    <h4>لماذا هذه الدورة</h4>
-                    <p>هذه الدورة موجهة للمبتدئين والمحترفين بحد سواء وتركز على التطبيق العملي اكثر من النظري ومن خلال هذه الدورة سوف تتعلم كيف تنشئ ادواتك الخاصة التي سوف تستخدمها في مجال CyberSecurity وسوف تكون محترف في صناعة الأدوات الخاصة بك مما يجعلك مميز عن الباقين في مجالك وايضاً المدرب سوف يقوم بأنشاء درس خاص لك في حال انك لم تفهم درس من الدروس المسجلة وسوف يكون الدرس مباشر والمدرب سوف يجيب على جميع الأسئلة المتعلقة في الكورس. وايضاً يوجد شهادة بعد الأنتهاء من الدورة</p>
-                </div>
-                <div class="about-card">
-                    <i class="fas fa-user-tie"></i>
-                    <h4>أيدي أمينة</h4>
-                    <p>الدورة مقدمة من مدرب محترف في CyberSecurity وهندسة البرمجيات وخبرة تزيد عن 7 سنوات في التعلم وخبرة اكثر من 5 سنوات في التدريس والمدرب حاصل على العديد من الشهادات في هذا المجال والجميل المدرب بدء رحلته من عمر 14 عام لذلك هو يعرف كيف يفكر الطلاب المحترفين والمبتدئين ويعرف كيف يقوم بإيصال المعلومة</p>
-                </div>
-            </div>
+
+    <section id="levels" class="full-desc">
+      <h2>المنهج التفصيلي — 5 مستويات</h2>
+      <div class="levels">
+        <!-- Level 1 -->
+        <div class="level card">
+          <h3>المستوى الأول — أساسيات ++C (01:19:37)</h3>
+          <div class="lessons">
+            <div class="lesson">01 مقدمة الى ++C</div>
+            <div class="lesson">02 اعداد بيئة العمل وتثبيت Compiler وIDE</div>
+            <div class="lesson">03 أول برنامج في ++C وامر الطباعة cout</div>
+            <div class="lesson">04 المتغيرات (variables)</div>
+            <div class="lesson">05 حقول الإدخال cin</div>
+            <div class="lesson">06 العمليات الحسابية (Oprators)</div>
+            <div class="lesson">07 التعاليق (comments)</div>
+            <div class="lesson">08 الشروط (Conditions)</div>
+            <div class="lesson">09 حلقات التكرار (Loops)</div>
+            <div class="lesson">10 القوائم (Arrays)</div>
+            <div class="lesson">11 الدوال (functions)</div>
+            <div class="lesson">12 المؤشرات (Pointers)</div>
+            <div class="lesson">13 المراجع (References)</div>
+            <div class="lesson">14 الهياكل (Struct)</div>
+            <div class="lesson">15 مشروع نهائي صغير (final project)</div>
+            <div class="lesson">16 ما التالي (what is next step)</div>
+          </div>
         </div>
-    </section>
-    
-    <!-- قسم المستويات -->
-    <section class="levels" id="levels">
-        <div class="levels-container">
-            <div class="section-title">
-                <h3>محتويات الكورس</h3>
-            </div>
-            
-            <div class="tabs" dir="ltr">
-                <button class="tab-button active" data-tab="level1">C++</button>
-                <button class="tab-button" data-tab="level2">Java</button>
-                <button class="tab-button" data-tab="level3">Python Level 1</button>
-                <button class="tab-button" data-tab="level4">Python Level 2</button>
-                <button class="tab-button" data-tab="level5">Python Level 3</button>
-            </div>
-            
-            <div class="tab-content active" id="level1">
-                <div class="level-card">
-                    <h4>أساسيات ++C للمبتدئين <span class="level-time">(01:19:37)</span></h4>
-                    <ul class="lessons-list">
-                        <li>01 مقدمة الى ++C</li>
-                        <li>02 اعداد بيئة العمل وتثبيت Compiler وIDE</li>
-                        <li>03 أول برنامج في ++C وامر الطباعة cout</li>
-                        <li>04 المتغيرات (variables)</li>
-                        <li>05 حقول الإدخال cin</li>
-                        <li>06 العمليات الحسابية (Oprators)</li>
-                        <li>07 التعاليق (comments)</li>
-                        <li>08 الشروط (Conditions)</li>
-                        <li>09 حلقات التكرار (Loops)</li>
-                        <li>10 القوائم (Arrays)</li>
-                        <li>11 الدوال (functions)</li>
-                        <li>12 المؤشرات (Pointers)</li>
-                        <li>13 المراجع (References)</li>
-                        <li>14 الهياكل (Struct)</li>
-                        <li>15 مشروع نهائي صغير (final project)</li>
-                        <li>16 ما التالي (what is next step)</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="tab-content" id="level2">
-                <div class="level-card">
-                    <h4>المقدمة الى جافا<span class="level-time">(01:??:??)</span></h4>
-                    <ul class="lessons-list">
-                        <li>01 مقدمة الى Java</li>
-                        <li>02 إعداد بيئة العمل (Installing JDK & Setting Up IDE)</li>
-                        <li>03 أول برنامج في Java (First Program)</li>
-                        <li>04 المتغيرات (variables)</li>
-                        <li>05 حقول الإدخال (Scanner)</li>
-                        <li>06 العمليات (Arithmetic, Logical, Comparison)</li>
-                        <li>07 التعاليق (comments)</li>
-                        <li>08 الشروط (Conditions)</li>
-                        <li>09 حلقات التكرار (Loops)</li>
-                        <li>10 القوائم (Arrays)</li>
-                        <li>11 الدوال (functions)</li>
-                        <li>12 النصوص (Strings in Java)</li>
-                        <li>13 مكتبة الرياضيات والقيم العشوائية (Math and Random in Java)</li>
-                        <li>14 اصطياد الأخطاء (Exception Handling)</li>
-                        <li>15 التعامل مع الملفات الخارجية (File Handling)</li>
-                        <li>16 ما التالي (what is next step)</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="tab-content" id="level3">
-                <div class="level-card">
-                    <h4>المقدمة الى بايثون<span class="level-time">(03:18:02)</span></h4>
-                    <ul class="lessons-list">
-                        <li>01 مقدمة الى بايثون</li>
-                        <li>02 إعداد بيئة بايثون و VS Code</li>
-                        <li>03 أمر الطباعة (print)</li>
-                        <li>04 إدخال البيانات (input)</li>
-                        <li>05 المتغيرات (variables)</li>
-                        <li>06 التعليقات (comments)</li>
-                        <li>07 العمليات الحسابية</li>
-                        <li>08 النصوص (strings)</li>
-                        <li>09 القواميس (dict)</li>
-                        <li>10 القوائم (lists)</li>
-                        <li>11 المجموعات (set)</li>
-                        <li>12 التوبلات (tuple)</li>
-                        <li>13 القيم المنطقية (boolean)</li>
-                        <li>14 تحويل أنواع البيانات</li>
-                        <li>15 جمل الشرط (if statements)</li>
-                        <li>16 جمل match و case</li>
-                        <li>17 الحلقات التكرارية (while loop)</li>
-                        <li>18 الحلقات التكرارية (for loop)</li>
-                        <li>19 الدوال (functions)</li>
-                        <li>20 الدوال اللامية (lambda)</li>
-                        <li>21 المكتبات (libraries)</li>
-                        <li>22 معالجة الأخطاء (try/except)</li>
-                        <li>23 التعامل مع الملفات النصية</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="tab-content" id="level4">
-                <div class="level-card">
-                    <h4>البرمجة كائنية التوجه<span class="level-time">(02:45:30)</span></h4>
-                    <ul class="lessons-list">
-                        <li>01 ما هي البرمجة الكائنية</li>
-                        <li>02 الكائنات (Objects)</li>
-                        <li>03 الخصائص والكلاسات</li>
-                        <li>04 الدوال (methods)</li>
-                        <li>05 كلمة self</li>
-                        <li>06 الوراثة (inheritance)</li>
-                        <li>07 إضافة خصائص جديدة للكلاسات</li>
-                        <li>08 التغليف (encapsulation)</li>
-                        <li>09 setter و getter</li>
-                        <li>10 التجريد (abstraction)</li>
-                        <li>11 الدالة __init__</li>
-                        <li>12 شرح if __name__ == '__main__'</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="tab-content" id="level5">
-                <div class="level-card">
-                    <h4>التطبيقات الأمنية المتقدمة <span class="level-time">(05:22:15)</span></h4>
-                    <ul class="lessons-list">
-                        <li>01 مقدمة للمستوى الحالي</li>
-                        <li>02 تشفير النصوص وعمليات الهاش</li>
-                        <li>03 هاش القوائم</li>
-                        <li>04 فك التشفير باستخدام قوائم الكلمات</li>
-                        <li>05 فك التشفير باستخدام كلمات عشوائية</li>
-                        <li>06 مكتبة binascii</li>
-                        <li>07 مكتبة base64</li>
-                        <li>08 دالة padding باستخدام lambda</li>
-                        <li>09 مكتبة pycryptodome</li>
-                        <li>10 وضع CBC في التشفير</li>
-                        <li>11 تشفير البيانات من ملف</li>
-                        <li>12 تشفير الملفات</li>
-                        <li>13 تشفير الملفات - جزء متقدم</li>
-                        <li>14 مكتبة argsparser</li>
-                        <li>15 إنشاء أداة لتحميل الصور من الويب</li>
-                        <li>16 أساسيات الـ socket</li>
-                        <li>17 إنشاء backdoor متقدم - الجزء الأول</li>
-                        <li>18 إنشاء backdoor متقدم - الجزء الثاني</li>
-                        <li>19 اختبار الطلاب لدروس الـ backdoor</li>
-                        <li>20 إنشاء أداة مسح المنافذ</li>
-                        <li>21 أداة مسح المنافذ - جزء متقدم</li>
-                        <li>22 اختبار الطلاب لدروس مسح المنافذ</li>
-                        <li>23 الزحف على الويب (web scraping)</li>
-                        <li>24 إنشاء أداة اكتشاف ثغرات XSS</li>
-                        <li>25 ما هي API وكيفية استخدامها</li>
-                        <li>26 جمع معلومات الجهاز باستخدام سكربت بايثون و Telegram API</li>
-                        <li>27 كيفية برمجة keylogger باستخدام بايثون</li>
-                        <li>28 محلل كلمات المرور</li>
-                    </ul>
-                </div>
-                <div class="level-card">
-                    <h4>دروس جديدة تضاف دورياً</h4>
-                    <p>سيتم إضافة دروس جديدة بشكل دوري لتغطية مواضيع متقدمة في الأمن السيبراني باستخدام بايثون.</p>
-                </div>
-            </div>
+
+        <!-- Level 2 -->
+        <div class="level card">
+          <h3>المستوى الثاني — المقدمة الى Java (المدة: متغيرة)</h3>
+          <div class="lessons">
+            <div class="lesson">01 مقدمة الى Java</div>
+            <div class="lesson">02 إعداد بيئة العمل (Installing JDK & Setting Up IDE)</div>
+            <div class="lesson">03 أول برنامج في Java (First Program)</div>
+            <div class="lesson">04 المتغيرات (variables)</div>
+            <div class="lesson">05 حقول الإدخال (Scanner)</div>
+            <div class="lesson">06 العمليات (Arithmetic, Logical, Comparison)</div>
+            <div class="lesson">07 التعاليق (comments)</div>
+            <div class="lesson">08 الشروط (Conditions)</div>
+            <div class="lesson">09 حلقات التكرار (Loops)</div>
+            <div class="lesson">10 القوائم (Arrays)</div>
+            <div class="lesson">11 الدوال (functions)</div>
+            <div class="lesson">12 النصوص (Strings in Java)</div>
+            <div class="lesson">13 مكتبة الرياضيات والقيم العشوائية (Math and Random in Java)</div>
+            <div class="lesson">14 اصطياد الأخطاء (Exception Handling)</div>
+            <div class="lesson">15 التعامل مع الملفات الخارجية (File Handling)</div>
+            <div class="lesson">16 ما التالي (what is next step)</div>
+          </div>
         </div>
-    </section>
-    
-    <!-- قسم السعر -->
-    <section class="pricing" id="pricing">
-        <div class="section-container">
-            <div class="section-title">
-                <h3>اشترك في الكورس</h3>
-            </div>
-            <div class="price-card">
-                <div class="price-card-content">
-                    <h4>كورس Programming Security الشامل</h4>
-                    <div class="price">
-                        <span class="old-price"><del>$300</del></span>
-                        <span class="new-price">$200 فقط</span>
-                    </div>
-                    <ul class="price-features">
-                        <li>5 مستويات متكاملة</li>
-                        <li>80+ درس عملي</li>
-                        <li>شهادة بعد الأنتهاء من الدورة بشكل كامل</li>
-                        <li>دروس جديدة تضاف دورياً</li>
-                        <li>دعم فني مباشر</li>
-                        <li>وصول مدى الحياة للمحتوى</li>
-                    </ul>
-                    <a href="#contact" class="cta-button">اشترك الآن</a>
-                </div>
-            </div>
+
+        <!-- Level 3 -->
+        <div class="level card">
+          <h3>المستوى الثالث — المقدمة الى بايثون (03:18:02)</h3>
+          <div class="lessons">
+            <div class="lesson">01 مقدمة الى بايثون</div>
+            <div class="lesson">02 إعداد بيئة بايثون و VS Code</div>
+            <div class="lesson">03 أمر الطباعة (print)</div>
+            <div class="lesson">04 إدخال البيانات (input)</div>
+            <div class="lesson">05 المتغيرات (variables)</div>
+            <div class="lesson">06 التعليقات (comments)</div>
+            <div class="lesson">07 العمليات الحسابية</div>
+            <div class="lesson">08 النصوص (strings)</div>
+            <div class="lesson">09 القواميس (dict)</div>
+            <div class="lesson">10 القوائم (lists)</div>
+            <div class="lesson">11 المجموعات (set)</div>
+            <div class="lesson">12 التوبلات (tuple)</div>
+            <div class="lesson">13 القيم المنطقية (boolean)</div>
+            <div class="lesson">14 تحويل أنواع البيانات</div>
+            <div class="lesson">15 جمل الشرط (if statements)</div>
+            <div class="lesson">16 جمل match و case</div>
+            <div class="lesson">17 الحلقات التكرارية (while loop)</div>
+            <div class="lesson">18 الحلقات التكرارية (for loop)</div>
+            <div class="lesson">19 الدوال (functions)</div>
+            <div class="lesson">20 الدوال اللامية (lambda)</div>
+            <div class="lesson">21 المكتبات (libraries)</div>
+            <div class="lesson">22 معالجة الأخطاء (try/except)</div>
+            <div class="lesson">23 التعامل مع الملفات النصية</div>
+          </div>
         </div>
-    </section>
-    
-    <!-- قسم الاتصال -->
-    <section class="contact" id="contact">
-        <div class="contact-container">
-            <div class="contact-info">
-                <h4>تواصل معنا</h4>
-                <p>لديك استفسار أو تحتاج إلى مساعدة؟ تواصل معنا مباشرة عبر منصات التواصل الاجتماعي التالية:</p>
-            </div>
-            <div class="social-contact">
-                <a href="https://www.tiktok.com/@lw__w7" class="social-btn tiktok-btn" target="_blank">
-                    <i class="fab fa-tiktok"></i>
-                    تيك توك
-                </a>
-                <a href="https://t.me/lw_w7" class="social-btn telegram-btn" target="_blank">
-                    <i class="fab fa-telegram"></i>
-                    تليكرام 
-                </a>
-                <a href="https://www.instagram.com/lw__w6" class="social-btn instagram-btn" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                    إنستغرام
-                </a>
-            </div>
+
+        <!-- Level 4 -->
+        <div class="level card">
+          <h3>المستوى الرابع — البرمجة كائنية التوجه (02:45:30)</h3>
+          <div class="lessons">
+            <div class="lesson">01 ما هي البرمجة الكائنية</div>
+            <div class="lesson">02 الكائنات (Objects)</div>
+            <div class="lesson">03 الخصائص والكلاسات</div>
+            <div class="lesson">04 الدوال (methods)</div>
+            <div class="lesson">05 كلمة self</div>
+            <div class="lesson">06 الوراثة (inheritance)</div>
+            <div class="lesson">07 إضافة خصائص جديدة للكلاسات</div>
+            <div class="lesson">08 التغليف (encapsulation)</div>
+            <div class="lesson">09 setter و getter</div>
+            <div class="lesson">10 التجريد (abstraction)</div>
+            <div class="lesson">11 الدالة __init__</div>
+            <div class="lesson">12 شرح if __name__ == '__main__'</div>
+          </div>
         </div>
-        <br>
-        <br>
-        <br>
+
+        <!-- Level 5 -->
+        <div class="level card">
+          <h3>المستوى الخامس — التطبيقات الأمنية المتقدمة (05:22:15)</h3>
+          <div class="lessons">
+            <div class="lesson">01 مقدمة للمستوى الحالي</div>
+            <div class="lesson">02 تشفير النصوص وعمليات الهاش</div>
+            <div class="lesson">03 هاش القوائم</div>
+            <div class="lesson">04 فك التشفير باستخدام قوائم الكلمات</div>
+            <div class="lesson">05 فك التشفير باستخدام كلمات عشوائية</div>
+            <div class="lesson">06 مكتبة binascii</div>
+            <div class="lesson">07 مكتبة base64</div>
+            <div class="lesson">08 دالة padding باستخدام lambda</div>
+            <div class="lesson">09 مكتبة pycryptodome</div>
+            <div class="lesson">10 وضع CBC في التشفير</div>
+            <div class="lesson">11 تشفير البيانات من ملف</div>
+            <div class="lesson">12 تشفير الملفات</div>
+            <div class="lesson">13 تشفير الملفات - جزء متقدم</div>
+            <div class="lesson">14 مكتبة argsparser</div>
+            <div class="lesson">15 إنشاء أداة لتحميل الصور من الويب</div>
+            <div class="lesson">16 أساسيات الـ socket</div>
+            <div class="lesson">17 إنشاء backdoor متقدم - الجزء الأول</div>
+            <div class="lesson">18 إنشاء backdoor متقدم - الجزء الثاني</div>
+            <div class="lesson">19 اختبار الطلاب لدروس الـ backdoor</div>
+            <div class="lesson">20 إنشاء أداة مسح المنافذ</div>
+            <div class="lesson">21 أداة مسح المنافذ - جزء متقدم</div>
+            <div class="lesson">22 اختبار الطلاب لدروس مسح المنافذ</div>
+            <div class="lesson">23 الزحف على الويب (web scraping)</div>
+            <div class="lesson">24 إنشاء أداة اكتشاف ثغرات XSS</div>
+            <div class="lesson">25 ما هي API وكيفية استخدامها</div>
+            <div class="lesson">26 جمع معلومات الجهاز باستخدام سكربت بايثون و Telegram API</div>
+            <div class="lesson">27 كيفية برمجة keylogger باستخدام بايثون</div>
+            <div class="lesson">28 محلل كلمات المرور</div>
+          </div>
+        </div>
+
+      </div>
     </section>
-    
-    <!-- الفوتر -->
+
+    <section style="margin-top:20px" id="features">
+      <h2>لماذا هذه الدورة؟</h2>
+      <div class="grid-three">
+        <div class="card">
+          <h3>موجهة للمبتدئين والمحترفين</h3>
+          <p class="muted">تركيز قوي على التطبيق العملي، ودروس متابعة مباشرة عند الحاجة.</p>
+        </div>
+        <div class="card">
+          <h3>شهادة عند الانتهاء</h3>
+          <p class="muted">تحصل على شهادة تغطي كل المستويات عند إتمام الدورة.</p>
+        </div>
+        <div class="card">
+          <h3>دعم فني مباشر</h3>
+          <p class="muted">دعم للإجابة على استفساراتك ومتابعة تقدمك.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:20px" id="pricing">
+      <h2>التسعير</h2>
+      <div class="card">
+        <p>سعر العرض الحالي: <strong>$200</strong> <span class="old">$300</span></p>
+        <ul>
+          <li>5 مستويات متكاملة</li>
+          <li>80+ درس عملي</li>
+          <li>وصول مدى الحياة للمحتوى</li>
+          <li>دعم فني مباشر + شهادات</li>
+        </ul>
+      </div>
+    </section>
+
+    <section style="margin-top:20px" id="faq">
+      <h2>أسئلة متكررة</h2>
+      <div class="accordion">
+        <div class="acc-item">
+          <div class="acc-head">كيف أتواصل مع المدرب؟ <span>+</span></div>
+          <div class="acc-body">يمكنك التواصل عبر روابط التواصل في أسفل الصفحة أو إرسال بريد إلى you@domain.com.</div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-head">هل الدورة مناسبة للمبتدئين؟ <span>+</span></div>
+          <div class="acc-body">نعم، تبدأ الدورة من أساسيات لغات البرمجة وتصل إلى تطبيقات أمنية متقدمة.</div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-head">هل هذا المساق قانوني؟ <span>+</span></div>
+          <div class="acc-body">المحتوى تعليمي. يُعدُّ استخدام الأدوات على أنظمة دون إذن نشاطًا غير قانوني. نحن نعلّم لأغراض تعليمية وأمنية فقط.</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:20px" id="contact">
+      <h2>تواصل معنا</h2>
+      <div class="card" style="display:flex;flex-direction:column;gap:10px">
+        <p>لديك استفسار أو تحتاج مساعدة؟ تواصل معنا مباشرة عبر:</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <a class="btn" href="https://www.tiktok.com">تيك توك</a>
+          <a class="btn" href="https://t.me">تليكرام</a>
+          <a class="btn" href="https://www.instagram.com">إنستغرام</a>
+        </div>
+        <p style="color:var(--muted);font-size:14px;margin-top:6px">عند الضغط على أي رابط سيتم التحويل إلى الصفحة الخارجية.</p>
+      </div>
+    </section>
+
     <footer>
-        <div class="footer-content">
-            <div class="logo">
-                <i class="fas fa-shield-alt"></i>
-                <h1>Programming Security</h1>
-            </div>
-            <ul class="social-links">
-                <li><a href="https://github.com/MohammedHamzaPr" target="_blank"><i class="fab fa-github"></i></a></li>
-                <li><a href="https://t.me/lw_w7" target="_blank"><i class="fab fa-telegram"></i></a></li>
-            </ul>
-            <p class="copyright">جميع الحقوق محفوظة &copy; 2025 Toxic - PR.Mohammed Hamza</p>
-        </div>
+      <div>© 2025 Programming Security — جميع الحقوق محفوظة</div>
+      <div class="socials">
+        تواصل معنا:
+        <a href="https://www.tiktok.com">تيك توك</a>
+        <a href="https://t.me">تليكرام</a>
+        <a href="https://www.instagram.com">إنستغرام</a>
+      </div>
     </footer>
-    
-    <script src="js/script.js" defer></script>
+  </div>
+
+  <script>
+    // accordion
+    document.querySelectorAll('.acc-head').forEach(h=>{
+      h.addEventListener('click',()=>{
+        const body = h.nextElementSibling;
+        const open = body.style.display === 'block';
+        document.querySelectorAll('.acc-body').forEach(b=>b.style.display='none');
+        if(!open) body.style.display = 'block';
+      });
+    });
+  </script>
 </body>
 </html>
-
-
-
