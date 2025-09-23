@@ -44,6 +44,11 @@
     .price{font-size:28px;font-weight:700}
     .old{opacity:.6;text-decoration:line-through;color:var(--muted)}
     .badge{background:var(--accent-2);color:#031026;padding:6px 8px;border-radius:8px;font-weight:700;display:inline-block;margin-bottom:10px}
+    
+    /* أسعار الدينار العراقي - الشكل الجديد */
+    .iqd-price {margin-top: 8px; font-size: 16px;}
+    .iqd-price .current {color: var(--accent-2); font-weight: 700;}
+    .iqd-price .old {color: var(--muted); text-decoration: line-through; margin-left: 8px;}
 
     .levels{margin-top:20px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
     .level{padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00))}
@@ -106,7 +111,11 @@
 
       <aside class="card price-box">
         <div class="badge">الدورة الأولى في الوطن العربي</div>
-        <div class="price">$200 <span class="old">$300</span></div>
+        <div class="price">$225 <span class="old">$350</span></div>
+        <div class="iqd-price">
+          <span class="current">326,250 دينار عراقي</span>
+          <span class="old">507,500</span>
+        </div>
         <div style="color:var(--muted);margin-top:8px">5 مستويات <br> 80+ درس عملي <br> شهادة عند الانتهاء <br> وصول مدى الحياة</div>
         <a id="enroll" class="btn" style="margin-top:12px;display:inline-block" href="https://t.me/lw_w7">اشترك الآن عبر التليكرام</a>
       </aside>
@@ -284,7 +293,11 @@
     <section style="margin-top:20px" id="pricing">
       <h2>التسعير</h2>
       <div class="card">
-        <p>سعر العرض الحالي: <strong>$200</strong> <span class="old">$300</span></p>
+        <p>سعر العرض الحالي: <strong>$225</strong> <span class="old">$350</span></p>
+        <div class="iqd-price">
+          <span class="current">326,250 دينار عراقي</span>
+          <span class="old">507,500</span>
+        </div>
         <ul>
           <li>5 مستويات متكاملة</li>
           <li>80+ درس عملي</li>
@@ -297,6 +310,87 @@
     <section style="margin-top:20px" id="faq">
       <h2>أسئلة متكررة</h2>
       <div class="accordion">
+        <div class="acc-item">
+          <div class="acc-head">لماذا اتعلم C++ وJava وبعدها بايثون؟ لماذا لا أدخل إلى بايثون مباشرة؟ <span>+</span></div>
+          <div class="acc-body">
+            <p>شوفوا شباب، سؤال جيد: ليش مسار كورس الـ Programming Security بدأ بـ C++، بعدين Java، وبعدين Python؟ خل أحچي لكم خطوة خطوة:</p>
+            
+            <p><strong>1. C++ — الأساس العميق للكمبيوتر</strong></p>
+            <p>في البداية تعلمنا C++ لأنها تعلمنا كيف الكمبيوتر يفكر من الداخل.</p>
+            <p>شنو يعني؟ يعني تتعلمون كيف الذاكرة تدار، شنو هي المؤشرات (Pointers) وكيف نقدر نتحكم بالمتغيرات والبيانات بشكل دقيق.</p>
+            <p>ليش هذا مهم بالأمن السيبراني؟ لأن أغلب الثغرات مثل Buffer Overflow وMemory Leaks تصير بسبب سوء فهمنا للذاكرة.</p>
+            <p>C++ تخليك تعرف العمليات الحسابية والمنطقية تعمل شلون بالكمبيوتر، وكيف الهياكل (Structs) والدوال (Functions) تتفاعل مع الذاكرة.</p>
+            <p>باختصار: C++ تعلمك الجذر الحقيقي لكل برنامج وكيف الكمبيوتر ينفذ الكود خطوة خطوة.</p>
+            
+            <p><strong>2. Java — البرمجة المنظمة بدون تعقيدات الذاكرة</strong></p>
+            <p>بعد ما فهمنا الأساسيات بالـ C++، ننتقل لـ Java.</p>
+            <p>Java تعلمنا كتابة برامج منظمة ومرتبة بدون ما نقلق على إدارة الذاكرة مباشرة، لأن الـ Garbage Collector يهتم بالذاكرة.</p>
+            <p>الهدف من Java هو التعود على كتابة كود نظيف ومنظم، والتعامل مع المتغيرات والكلاسات بطريقة واضحة.</p>
+            <p>هذا المستوى يجهزنا قبل ما نطبق OOP عملياً، بحيث لما ننتقل لـ Python نركز على المفاهيم وليس التفاصيل الداخلية للكمبيوتر.</p>
+            
+            <p><strong>3. Python — التطبيق العملي + البرمجة الكائنية (OOP)</strong></p>
+            <p>أخيراً نجي لـ Python.</p>
+            <p>Python سهلة وسريعة، وهنا نبدأ بتطبيق OOP: الكائنات، الخصائص، الدوال، الوراثة، التغليف والتجريد.</p>
+            <p>بما أننا فهمنا الأساسيات بـ C++ وJava، صرنا نعرف ليش الكود يشتغل هيجي أو ليش بعض الأمور تؤثر بالأداء أو الأمان.</p>
+            <p>Python هنا راح تكون لغة التطبيقات العملية: نكتب أدوات الأمن السيبراني، تحليل البيانات، التشفير، وأدوات الاختراق الأخلاقي.</p>
+            <p>يعني Python = التطبيق العملي، C++ = الفهم العميق، Java = كتابة كود منظم.</p>
+            
+            <p><strong>الخلاصة</strong></p>
+            <p>C++ = الأساس العميق للكمبيوتر والذاكرة.</p>
+            <p>Java = تعلم كتابة برامج منظمة بطريقة واضحة.</p>
+            <p>Python = تعلم OOP + تطبيق أدوات الأمن السيبراني عملياً.</p>
+          </div>
+        </div>
+        
+        <div class="acc-item">
+          <div class="acc-head">ما دخل البرمجة في مجال الأمن السيبراني؟ <span>+</span></div>
+          <div class="acc-body">
+            <p>شوفوا شباب، هواي طلاب يسألون: شنو دخل البرمجة بمجال الأمن السيبراني؟ ليش ندرس لغات برمجة وإحنا أصلاً نريد نشتغل بالـ Security؟</p>
+            
+            <p><strong>الجواب بسيط: البرمجة هي سلاح الهاكر.</strong></p>
+            
+            <p>أول شي، الهجمات والثغرات مو جاية من الفضاء، كلها مبنية على أخطاء مبرمجين. إذا إنت ما تعرف شلون المبرمج يكتب كود، ما رح تگدر تفتهم وين الخطأ حتى تستغله أو تصلحه.</p>
+            
+            <p>مثلاً: ثغرة الـ Buffer Overflow تصير لأن المبرمج ما سيطر على حجم البيانات بالذاكرة. إذا إنت فاهم C++، رح تفتهم ليش تصير هاي المشكلة وشلون ممكن تنسد.</p>
+            
+            <p>ثاني شي، أنت كـ مختص بالأمن ما يكفي بس تعرف أدوات جاهزة، مرات لازم تكتب أداة خاصة بيك:</p>
+            <ul>
+              <li>أداة لمسح منافذ (Port Scanner)</li>
+              <li>سكربت لفحص كلمات مرور</li>
+              <li>برنامج لتشفير أو فك تشفير بيانات</li>
+            </ul>
+            
+            <p>كل هاي الأمور تحتاج برمجة، واللي يفتهم برمجة يكون أقوى من اللي يعتمد على أدوات غيره.</p>
+            
+            <p>يعني باختصار: البرمجة تخليك مو بس مستخدم أدوات، تخليك صانع أدوات، وتخليك تفهم جذور الثغرات الأمنية. وهاي ميزة أي شخص يريد ينجح بمجال السيكيورتي لازم تكون عنده.</p>
+          </div>
+        </div>
+        
+        <div class="acc-item">
+          <div class="acc-head">هل أحتاج إلى خبرة سابقة في البرمجة؟ <span>+</span></div>
+          <div class="acc-body">لا، الدورة مصممة لتكون مناسبة للمبتدئين تماماً. نبدأ من الصفر (كيفية تثبيت الأدوات، أساسيات البرمجة) ونتدرج معك خطوة بخطوة حتى المستويات المتقدمة.</div>
+        </div>
+        
+        <div class="acc-item">
+          <div class="acc-head">كم ساعة يجب أن أدرس يومياً؟ <span>+</span></div>
+          <div class="acc-body">نوصي بـ 1-2 ساعات يومياً أو 10 ساعات أسبوعياً للحصول على أفضل نتائج واستيعاب المحتوى بشكل مريح. الدروس مقسمة إلى أجزاء صغيرة لتسهيل المتابعة.</div>
+        </div>
+        
+        <div class="acc-item">
+          <div class="acc-head">هل يمكنني الحصول على الدعم بعد انتهاء الدورة؟<span>+</span></div>
+          <div class="acc-body">نعم، يمكنك الوصول إلى المحتوى مدى الحياة، كما أن قناة التليجرام مخصصة للدعم المستمر والإجابة على أسئلة الخريجين حتى بعد إكمال الدورة.</div>
+        </div>
+        
+        <div class="acc-item">
+          <div class="acc-head">ماذا عن تحديثات المحتوى؟<span>+</span></div>
+          <div class="acc-body">نقوم بتحديث المحتوى دورياً لإضافة تقنيات جديدة أو مواضيع مطورة. جميع التحديثات مجانية ومتاحة لحاملي الدورة.</div>
+        </div>
+        
+        <div class="acc-item">
+          <div class="acc-head">هل الشهادة معتمدة؟<span>+</span></div>
+          <div class="acc-body">الشهادة تثبت إتمامك لـ 5 مستويات في البرمجة والأمن السيبراني، وهي مفيدة للسيرة الذاتية وإثبات المهارة للمستقبل الوظيفي أو المشاريع الشخصية.</div>
+        </div>
+        
         <div class="acc-item">
           <div class="acc-head">كيف أتواصل مع المدرب؟ <span>+</span></div>
           <div class="acc-body">يمكنك التواصل عبر روابط التواصل في أسفل الصفحة أو إرسال بريد إلى you@domain.com.</div>
@@ -349,7 +443,3 @@
   </script>
 </body>
 </html>
-
-
-
-
