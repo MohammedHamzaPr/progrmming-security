@@ -1,563 +1,565 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="icons/photo_2025-09-12_13-52-18.ico" />
-  <title>كورس Programming Security - دورة كاملة</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --accent:#0b5ed7; /* blue */
-      --accent-2:#f0b429; /* yellow */
-      --bg:#0f1724;
-      --card:#0b1220;
-      --muted:#9aa3b2;
-      --glass: rgba(255,255,255,0.03);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      padding:0;
-      font-family:'Cairo',sans-serif;
-      background:linear-gradient(180deg,#071023 0%, #071a2a 60%);
-      color:#e6eef9;
-      -webkit-font-smoothing:antialiased;
-      line-height:1.6;
-    }
-    .container{max-width:1100px;margin:24px auto;padding:20px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#08203a}
-    h1{margin:0;font-size:20px}
-    .cta{display:flex;gap:8px}
-    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600}
-    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent-2)}
-    .hero{display:grid;grid-template-columns:1fr 380px;gap:20px;margin-top:18px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
-    .summary p{color:var(--muted);margin:8px 0}
-    .highlights{display:flex;flex-direction:column;gap:8px;margin-top:12px}
-    .feature{display:flex;gap:10px;align-items:flex-start}
-    .feature .dot{width:10px;height:10px;border-radius:3px;background:var(--accent-2);margin-top:6px}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programming &amp; Security — معسكر تدريبي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e16;
+    --bg-soft:#0f1521;
+    --panel:#121a28;
+    --panel-line:#1f2c3f;
+    --cyan:#3dd6f5;
+    --cyan-dim:#1c4452;
+    --gold:#e8b339;
+    --text:#c9d3e0;
+    --text-bright:#eef2f7;
+    --text-dim:#6c7a8e;
+    --red:#e25c5c;
+    --green:#4fc97a;
+    --radius:14px;
+    --mono:'JetBrains Mono', monospace;
+    --sans:'IBM Plex Sans Arabic', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--cyan); color:#04141a;}
 
-    .price-box{padding:16px;border-radius:10px;text-align:center}
-    .price{font-size:28px;font-weight:700}
-    .old{opacity:.6;text-decoration:line-through;color:var(--muted)}
-    .badge{background:var(--accent-2);color:#031026;padding:6px 8px;border-radius:8px;font-weight:700;display:inline-block;margin-bottom:10px}
-    
-    /* أسعار الدينار العراقي - الشكل الجديد */
-    .iqd-price {margin-top: 8px; font-size: 16px;}
-    .iqd-price .current {color: var(--accent-2); font-weight: 700;}
-    .iqd-price .old {color: var(--muted); text-decoration: line-through; margin-left: 8px;}
+  .noise{
+    position:fixed; inset:0; pointer-events:none; z-index:1;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(61,214,245,0.05), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(232,179,57,0.04), transparent 45%);
+  }
 
-    .levels{margin-top:20px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .level{padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00))}
-    .level h3{margin:0 0 8px}
-    .lessons{max-height:220px;overflow:auto;padding-right:8px}
-    .lesson{padding:6px 0;border-bottom:1px dashed rgba(255,255,255,0.03);font-size:14px}
+  .scanlines{
+    position:fixed; inset:0; pointer-events:none; z-index:2; opacity:0.025;
+    background:repeating-linear-gradient(0deg, #fff 0px, transparent 1px, transparent 3px);
+  }
 
-    .full-desc{margin-top:20px}
-    .grid-three{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  a{color:inherit; text-decoration:none;}
+  .container{max-width:1100px; margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    font-family:var(--mono); font-size:13px; letter-spacing:0.5px;
+    color:var(--cyan); display:flex; align-items:center; gap:10px;
+    text-transform:uppercase;
+  }
+  .eyebrow::before{content:'$'; color:var(--gold);}
 
-    footer{margin-top:26px;padding:18px;border-radius:10px;background:var(--glass);display:flex;justify-content:space-between;align-items:center}
-    .socials a{color:var(--accent-2);text-decoration:none;margin-left:12px}
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; right:0; left:0; z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(10,14,22,0.7);
+    border-bottom:1px solid var(--panel-line);
+  }
+  .nav-inner{
+    max-width:1100px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand img{width:34px; height:34px; border-radius:8px; object-fit:cover;}
+  .brand-name{font-weight:700; color:var(--text-bright); font-size:15px;}
+  .brand-name .accent{color:var(--cyan); font-family:var(--mono);}
+  .nav-links{display:flex; gap:28px; font-size:14px;}
+  .nav-links a{color:var(--text-dim); transition:color .2s;}
+  .nav-links a:hover{color:var(--cyan);}
+  .nav-links{display:none;}
+  @media(min-width:760px){.nav-links{display:flex;}}
 
-    /* accordion */
-    .accordion{margin-top:12px}
-    .acc-item{border-radius:10px;background:rgba(255,255,255,0.02);margin-bottom:8px}
-    .acc-head{padding:12px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-    .acc-body{padding:12px;border-top:1px solid rgba(255,255,255,0.02);display:none}
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; z-index:3;
+    padding:160px 0 90px;
+    display:flex; flex-direction:column; align-items:center; text-align:center;
+    overflow:hidden;
+  }
+  .hero-grid{
+    position:absolute; inset:0; z-index:-1;
+    background-image:
+      linear-gradient(rgba(61,214,245,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(61,214,245,0.05) 1px, transparent 1px);
+    background-size:46px 46px;
+    mask-image:radial-gradient(ellipse 60% 50% at 50% 30%, black 30%, transparent 75%);
+  }
+  .shield-wrap{
+    position:relative; width:150px; height:150px; margin-bottom:28px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .shield-wrap img{
+    width:130px;
+    height:130px;
+    object-fit:cover;
+    border-radius:50%;
+    filter:drop-shadow(0 0 30px rgba(61,214,245,0.25));
+}
+  .shield-ring{
+    position:absolute; inset:0; border-radius:50%;
+    border:1px solid var(--cyan-dim);
+    animation:spin 14s linear infinite;
+  }
+  .shield-ring::before{
+    content:''; position:absolute; top:-1px; left:50%; width:6px; height:6px;
+    background:var(--cyan); border-radius:50%; transform:translateX(-50%);
+    box-shadow:0 0 10px var(--cyan);
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  @media (prefers-reduced-motion: reduce){.shield-ring{animation:none;}}
 
-    /* responsive */
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr}
-      .levels{grid-template-columns:1fr}
-    }
-  </style>
+  .hero h1{
+    font-size:clamp(34px, 6vw, 62px);
+    font-weight:700; color:var(--text-bright);
+    line-height:1.25; max-width:780px;
+    margin-bottom:18px;
+  }
+  .hero h1 .hl{color:var(--cyan);}
+  .hero p.lead{
+    font-size:clamp(16px, 2vw, 19px); color:var(--text-dim);
+    max-width:600px; margin-bottom:34px;
+  }
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-bottom:50px;}
+  .btn{
+    font-family:var(--sans); font-weight:600; font-size:15px;
+    padding:14px 30px; border-radius:10px; border:1px solid transparent;
+    cursor:pointer; transition:transform .15s, box-shadow .15s;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--cyan); color:#04141a;}
+  .btn-primary:hover{box-shadow:0 8px 24px rgba(61,214,245,0.3);}
+  .btn-ghost{background:transparent; border-color:var(--panel-line); color:var(--text-bright);}
+  .btn-ghost:hover{border-color:var(--cyan); color:var(--cyan);}
+
+  .hero-stats{
+    display:flex; gap:34px; flex-wrap:wrap; justify-content:center;
+    font-family:var(--mono);
+  }
+  .hero-stats .stat{text-align:center;}
+  .hero-stats .num{font-size:26px; font-weight:700; color:var(--text-bright);}
+  .hero-stats .num .accent{color:var(--gold);}
+  .hero-stats .label{font-size:12px; color:var(--text-dim); margin-top:2px;}
+
+  /* ---------- SECTION shared ---------- */
+  section{position:relative; z-index:3; padding:90px 0;}
+  .section-head{margin-bottom:48px; max-width:680px;}
+  .section-head h2{
+    font-size:clamp(26px, 4vw, 38px); color:var(--text-bright);
+    font-weight:700; margin-top:14px; line-height:1.35;
+  }
+  .section-head p{color:var(--text-dim); margin-top:12px; font-size:15.5px;}
+
+  /* ---------- TERMINAL INTRO ---------- */
+  .terminal{
+    background:var(--panel); border:1px solid var(--panel-line);
+    border-radius:var(--radius); max-width:760px; margin:0 auto 0;
+    overflow:hidden; box-shadow:0 20px 60px -20px rgba(0,0,0,0.5);
+  }
+  .terminal-bar{
+    display:flex; align-items:center; gap:8px;
+    padding:12px 16px; border-bottom:1px solid var(--panel-line);
+    background:rgba(255,255,255,0.02);
+  }
+  .terminal-bar span{width:10px; height:10px; border-radius:50%;}
+  .terminal-bar span:nth-child(1){background:#e25c5c;}
+  .terminal-bar span:nth-child(2){background:#e8b339;}
+  .terminal-bar span:nth-child(3){background:#4fc97a;}
+  .terminal-title{
+    margin-right:auto; font-family:var(--mono); font-size:12px; color:var(--text-dim);
+  }
+  .terminal-body{padding:22px 24px; font-family:var(--mono); font-size:14px; color:var(--text);}
+  .terminal-body .line{margin-bottom:8px;}
+  .terminal-body .prompt{color:var(--green);}
+  .terminal-body .path{color:var(--cyan);}
+  .terminal-body .comment{color:var(--text-dim);}
+  .cursor-blink{display:inline-block; width:8px; height:15px; background:var(--cyan); animation:blink 1s steps(1) infinite; vertical-align:middle;}
+  @keyframes blink{50%{opacity:0;}}
+
+  /* ---------- TRACK / LEVELS ---------- */
+  .tracks{display:flex; flex-direction:column; gap:14px;}
+  .track{
+    background:var(--panel); border:1px solid var(--panel-line);
+    border-radius:var(--radius); overflow:hidden;
+    transition:border-color .2s;
+  }
+  .track:hover{border-color:var(--cyan-dim);}
+  .track-head{
+    display:flex; align-items:center; gap:18px; padding:22px 24px;
+    cursor:pointer; user-select:none;
+  }
+  .track-step{
+    font-family:var(--mono); font-size:13px; color:var(--bg);
+    background:var(--cyan); width:34px; height:34px; border-radius:8px;
+    display:flex; align-items:center; justify-content:center; font-weight:700;
+    flex-shrink:0;
+  }
+  .track.optional .track-step{background:var(--gold);}
+  .track-info{flex:1;}
+  .track-info .t-title{font-size:17px; font-weight:600; color:var(--text-bright); display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .track-info .t-sub{font-size:13px; color:var(--text-dim); margin-top:4px; font-family:var(--mono);}
+  .badge-optional{
+    font-family:var(--mono); font-size:11px; color:var(--gold); border:1px solid var(--gold);
+    padding:2px 8px; border-radius:20px;
+  }
+  .track-count{font-family:var(--mono); font-size:13px; color:var(--text-dim); white-space:nowrap;}
+  .chevron{transition:transform .25s; color:var(--text-dim); flex-shrink:0;}
+  .track.open .chevron{transform:rotate(180deg); color:var(--cyan);}
+
+  .track-body{
+    max-height:0; overflow:hidden; transition:max-height .35s ease;
+  }
+  .track-body-inner{padding:0 24px 22px 24px;}
+  .lesson-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr));
+    gap:9px; padding-top:6px; border-top:1px solid var(--panel-line); margin-top:2px;
+  }
+  .lesson{
+    display:flex; align-items:baseline; gap:9px;
+    font-size:13.5px; color:var(--text); padding:9px 4px;
+  }
+  .lesson .ln{font-family:var(--mono); color:var(--text-dim); font-size:12px; flex-shrink:0;}
+
+  /* ---------- WHY / FEATURES ---------- */
+  .features{display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:18px;}
+  .feature{
+    background:var(--panel); border:1px solid var(--panel-line); border-radius:var(--radius);
+    padding:26px; transition:transform .2s, border-color .2s;
+  }
+  .feature:hover{transform:translateY(-4px); border-color:var(--cyan-dim);}
+  .feature-icon{
+    width:42px; height:42px; border-radius:10px; background:rgba(61,214,245,0.1);
+    display:flex; align-items:center; justify-content:center; margin-bottom:16px;
+    color:var(--cyan);
+  }
+  .feature h3{font-size:16.5px; color:var(--text-bright); margin-bottom:8px; font-weight:600;}
+  .feature p{font-size:14px; color:var(--text-dim);}
+
+  /* ---------- STACK STRIP ---------- */
+  .stack-strip{
+    display:flex; gap:14px; flex-wrap:wrap; justify-content:center;
+  }
+  .stack-pill{
+    font-family:var(--mono); font-size:13px; padding:9px 18px; border-radius:30px;
+    border:1px solid var(--panel-line); color:var(--text); background:var(--panel);
+  }
+
+  /* ---------- PRICING ---------- */
+  .pricing-card{
+    max-width:480px; margin:0 auto; text-align:center;
+    background:linear-gradient(180deg, var(--panel), var(--bg-soft));
+    border:1px solid var(--cyan-dim); border-radius:20px;
+    padding:46px 36px; position:relative; overflow:hidden;
+  }
+  .pricing-card::before{
+    content:''; position:absolute; top:-60px; right:-60px; width:200px; height:200px;
+    background:radial-gradient(circle, rgba(61,214,245,0.18), transparent 70%);
+  }
+  .pricing-card .p-eyebrow{font-family:var(--mono); font-size:12.5px; color:var(--gold); letter-spacing:1px; margin-bottom:14px;}
+  .price-row{display:flex; align-items:baseline; justify-content:center; gap:10px; margin-bottom:4px;}
+  .price-usd{font-family:var(--mono); font-size:52px; font-weight:700; color:var(--text-bright);}
+  .price-iqd{font-family:var(--mono); font-size:15px; color:var(--text-dim); margin-bottom:26px;}
+  .pricing-card ul{list-style:none; text-align:right; margin:26px 0; display:flex; flex-direction:column; gap:12px;}
+  .pricing-card li{display:flex; align-items:center; gap:10px; font-size:14.5px; color:var(--text);}
+  .check{
+    width:18px; height:18px; border-radius:5px; background:rgba(79,201,122,0.15);
+    color:var(--green); display:flex; align-items:center; justify-content:center;
+    font-size:11px; flex-shrink:0;
+  }
+  .pricing-note{font-size:12.5px; color:var(--text-dim); margin-top:18px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--panel-line); padding:40px 0; text-align:center;
+    color:var(--text-dim); font-size:13px;
+  }
+  footer .brand-name{justify-content:center; display:flex; margin-bottom:10px;}
+
+  /* reveal animation */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
+
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-track{background:var(--bg);}
+  ::-webkit-scrollbar-thumb{background:var(--panel-line); border-radius:10px;}
+</style>
 </head>
 <body>
+
+<div class="noise"></div>
+<div class="scanlines"></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">
+      <img src="logo.jpg" alt="شعار Programming & Security">
+      <span class="brand-name">Programming <span class="accent">&amp;</span> Security</span>
+    </div>
+    <div class="nav-links">
+      <a href="#path">المسار</a>
+      <a href="#why">ليش هذا المعسكر</a>
+      <a href="#pricing">السعر</a>
+      <a href="https://mohammedhamzapr.github.io/personal/" target="_blank" rel="noopener noreferrer">تواصل وياي</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="shield-wrap">
+    <div class="shield-ring"></div>
+    <img src="logo.jpg" alt="شعار Programming & Security">
+  </div>
+  <span class="eyebrow">multi_level_course.init()</span>
+  <h1>من تشغيل أول جهاز<br>إلى <span class="hl">بناء أدواتك الأمنية</span> بنفسك</h1>
+  <p class="lead">معسكر تدريبي عربي متكامل يبدأ من الصفر المطلق — حتى لو ما تعرف وين تضغط بالكيبورد — ويوصلك خطوة خطوة إلى البرمجة الأمنية الحقيقية: تشفير، أدوات اختراق تعليمية، قواعد بيانات، وأكثر.</p>
+  <div class="hero-cta">
+    <a href="#path" class="btn btn-primary">شوف محتوى الدورة كامل</a>
+    <a href="#pricing" class="btn btn-ghost">السعر والتفاصيل</a>
+    <a href="https://mohammedhamzapr.github.io/personal/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">تواصل وياي</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="num">6<span class="accent">+</span></div><div class="label">مستويات تعليمية</div></div>
+    <div class="stat"><div class="num">130<span class="accent">+</span></div><div class="label">درس مرتب بالتسلسل</div></div>
+    <div class="stat"><div class="num">3</div><div class="label">لغات برمجة كاملة</div></div>
+    <div class="stat"><div class="num">0</div><div class="label">خبرة سابقة مطلوبة</div></div>
+  </div>
+</header>
+
+<section id="terminal-section">
   <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">PS</div>
-        <div>
-          <h1>كورس Programming Security</h1>
-          <div style="color:var(--muted);font-size:13px">5 مستويات — تعليم عملي في الأمن السيبراني والبرمجة</div>
-        </div>
+    <div class="terminal reveal">
+      <div class="terminal-bar">
+        <span></span><span></span><span></span>
+        <div class="terminal-title">student@programming-security:~</div>
       </div>
-      <div class="cta">
-        <a class="btn" href="#enroll">اشترك الآن</a>
-        <a class="btn secondary" href="#levels">المنهج</a>
+      <div class="terminal-body">
+        <div class="line"><span class="prompt">$</span> whoami</div>
+        <div class="line comment">// طالب بدون خبرة سابقة بالحاسوب أو البرمجة</div>
+        <div class="line"><span class="prompt">$</span> cd <span class="path">./المرحلة-التأهيلية</span></div>
+        <div class="line comment">// نتعلم الهاردوير، الويندوز، الشبكات، والحماية الأساسية أولاً</div>
+        <div class="line"><span class="prompt">$</span> ./start_course.sh --level=1 --lang=cpp<span class="cursor-blink"></span></div>
       </div>
-    </header>
-
-    <section class="hero">
-      <div class="card summary">
-        <h2>أمن متكامل · برمجة عملية · خبرة عملية</h2>
-        <p>تعلم كيفية حماية الأنظمة والشبكات باستخدام أدوات قوية، من تشفير البيانات وحتى اكتشاف الثغرات. هذه الدورة تجمع لغات برمجة متعددة وتعلمك إنشاء أدوات عملية في مجال CyberSecurity.</p>
-
-        <div class="highlights">
-          <div class="feature"><div class="dot"></div><div><strong>برمجة عملية</strong><div class="muted">ستبني أدوات حقيقية: ماسحات ثغرات، أدوات تشفير، keyloggers للتعلّم فقط، وغير ذلك.</div></div></div>
-          <div class="feature"><div class="dot"></div><div><strong>خبرة عملية</strong><div class="muted">محتوى من خبراء قطاع الأمن السيبراني مع تطبيقات عملية.</div></div></div>
-          <div class="feature"><div class="dot"></div><div><strong>دروس جديدة دورياً</strong><div class="muted">تحديث مستمر لمحتوى الدورة لتغطية تقنيات حديثة.</div></div></div>
-        </div>
-
-        <div style="margin-top:14px;display:flex;gap:8px;align-items:center">
-          <a class="btn" href="#pricing">سعر العرض</a>
-          <a class="btn secondary" href="#contact">تواصل معنا</a>
-        </div>
-
-      </div>
-
-      <aside class="card price-box">
-        <div class="badge">الدورة الأولى في الوطن العربي</div>
-        <div class="price">$200 <span class="old">$350</span></div>
-        <div class="iqd-price">
-          <span class="current">300,000 دينار عراقي</span>
-          <span class="old">525,000</span>
-        </div>
-        <div style="color:var(--muted);margin-top:8px">5 مستويات <br> 80+ درس عملي <br> شهادة عند الانتهاء <br> وصول مدى الحياة</div>
-        <a id="enroll" class="btn" style="margin-top:12px;display:inline-block" href="https://t.me/lw_w7">اشترك الآن عبر التليكرام</a>
-      </aside>
-    </section>
-    <!-- طرق التحويل -->
-<section style="margin-top:20px" id="payment-methods">
-  <h2>طرق التحويل المتاحة</h2>
-  <div class="card">
-    <h3>داخل العراق</h3>
-    <ul>
-      <li>ماستر كارد</li>
-      <li>زين كاش</li>
-    </ul>
-    <h3 style="margin-top:15px">خارج العراق</h3>
-    <ul>
-      <li>ويسترن يونيون</li>
-      <li>USDT(TRC)</li>
-      <li>ماستر كارد</li>
-    </ul>
+    </div>
   </div>
 </section>
 
-    <section id="levels" class="full-desc">
-      <h2>المنهج التفصيلي — 6 مستويات</h2>
-      <div class="levels">
-        <!-- Level 0 -->
-        <div class="level card">
-          <h3>المرحلة التأهيلية ( استخدام الحاسوب )</h3>
-          <div class="lessons">
-            <div class="lesson">01 الهاردوير والسوفتوير ونظام التشغيل</div>
-            <div class="lesson">02 الفرق بين الكيس واللابتوب والسيرفر وشرح استخدام الكيبورد</div>
-            <div class="lesson">03 الكمبيوتر وكيف يعمل وقطعه واهمية كل قطعة في مجال CyberSecurity ( مختصر A+ )</div>
-            <div class="lesson">04 مقدمة عن نظام تشغيل ويندوز</div>
-            <div class="lesson">05 طريقة استخدام نظام ويندوز</div>
-            <div class="lesson">06 التعامل مع المجلدات والملفات</div>
-            <div class="lesson">07 المتصفح</div>
-            <div class="lesson">08 حذف وتثبيت والبحث عن البرامج</div>
-            <div class="lesson">09 الأعدادات الأساسية لنظام التشغيل ويندوز</div>
-            <div class="lesson">10 ادارة المستخدين والصلاحيات</div>
-            <div class="lesson">11 لوحة التحكم</div>
-            <div class="lesson">12 اساسيات الشبكات</div>
-            <div class="lesson">13 مدير المهام</div>
-            <div class="lesson">14 الحماية</div>
-            <div class="lesson">15 مصطلحات 1</div>
-            <div class="lesson">16 المصطلحات الدرس الأول</div>
-            <div class="lesson">17 المصطلحات الدرس الثاني</div>
-            <div class="lesson">18 المصطلحات الدرس الثالث</div>
-            <div class="lesson">19 التشفير واهميته</div>
-            <div class="lesson">20 نظم الحاسوب (1 0)</div>
-            <div class="lesson">21 مجلد بدء التشغيل</div>
-            <div class="lesson">22 ماذا بعد</div>
-          </div>
-        </div>
-        <!-- Level 1 -->
-        <div class="level card">
-          <h3>المستوى الأول — أساسيات ++C</h3>
-          <div class="lessons">
-            <div class="lesson">01 مقدمة الى ++C</div>
-            <div class="lesson">02 اعداد بيئة العمل وتثبيت Compiler وIDE</div>
-            <div class="lesson">03 أول برنامج في ++C وامر الطباعة cout</div>
-            <div class="lesson">04 المتغيرات (variables)</div>
-            <div class="lesson">05 حقول الإدخال cin</div>
-            <div class="lesson">06 العمليات الحسابية (Oprators)</div>
-            <div class="lesson">07 التعاليق (comments)</div>
-            <div class="lesson">08 الشروط (Conditions)</div>
-            <div class="lesson">09 حلقات التكرار (Loops)</div>
-            <div class="lesson">10 القوائم (Arrays)</div>
-            <div class="lesson">11 الدوال (functions)</div>
-            <div class="lesson">12 المؤشرات (Pointers)</div>
-            <div class="lesson">13 المراجع (References)</div>
-            <div class="lesson">14 الهياكل (Struct)</div>
-            <div class="lesson">15 مشروع نهائي صغير (final project)</div>
-            <div class="lesson">16 ما التالي (what is next step)</div>
-          </div>
-        </div>
-
-        <!-- Level 2 -->
-        <div class="level card">
-          <h3>المستوى الثاني — المقدمة الى Java</h3>
-          <div class="lessons">
-            <div class="lesson">01 مقدمة الى Java</div>
-            <div class="lesson">02 إعداد بيئة العمل (Installing JDK & Setting Up IDE)</div>
-            <div class="lesson">03 أول برنامج في Java (First Program)</div>
-            <div class="lesson">04 المتغيرات (variables)</div>
-            <div class="lesson">05 حقول الإدخال (Scanner)</div>
-            <div class="lesson">06 العمليات (Arithmetic, Logical, Comparison)</div>
-            <div class="lesson">07 التعاليق (comments)</div>
-            <div class="lesson">08 الشروط (Conditions)</div>
-            <div class="lesson">09 حلقات التكرار (Loops)</div>
-            <div class="lesson">10 القوائم (Arrays)</div>
-            <div class="lesson">11 الدوال (functions)</div>
-            <div class="lesson">12 النصوص (Strings in Java)</div>
-            <div class="lesson">13 مكتبة الرياضيات والقيم العشوائية (Math and Random in Java)</div>
-            <div class="lesson">14 اصطياد الأخطاء (Exception Handling)</div>
-            <div class="lesson">15 التعامل مع الملفات الخارجية (File Handling)</div>
-            <div class="lesson">16 ما التالي (what is next step)</div>
-          </div>
-        </div>
-
-        <!-- Level 3 -->
-        <div class="level card">
-          <h3>المستوى الثالث — المقدمة الى بايثون)</h3>
-          <div class="lessons">
-            <div class="lesson">01 مقدمة الى بايثون</div>
-            <div class="lesson">02 إعداد بيئة بايثون و VS Code</div>
-            <div class="lesson">03 أمر الطباعة (print)</div>
-            <div class="lesson">04 إدخال البيانات (input)</div>
-            <div class="lesson">05 المتغيرات (variables)</div>
-            <div class="lesson">06 التعليقات (comments)</div>
-            <div class="lesson">07 العمليات الحسابية</div>
-            <div class="lesson">08 النصوص (strings)</div>
-            <div class="lesson">09 القواميس (dict)</div>
-            <div class="lesson">10 القوائم (lists)</div>
-            <div class="lesson">11 المجموعات (set)</div>
-            <div class="lesson">12 التوبلات (tuple)</div>
-            <div class="lesson">13 القيم المنطقية (boolean)</div>
-            <div class="lesson">14 تحويل أنواع البيانات</div>
-            <div class="lesson">15 جمل الشرط (if statements)</div>
-            <div class="lesson">16 جمل match و case</div>
-            <div class="lesson">17 الحلقات التكرارية (while loop)</div>
-            <div class="lesson">18 الحلقات التكرارية (for loop)</div>
-            <div class="lesson">19 الدوال (functions)</div>
-            <div class="lesson">20 الدوال اللامية (lambda)</div>
-            <div class="lesson">21 المكتبات (libraries)</div>
-            <div class="lesson">22 معالجة الأخطاء (try/except)</div>
-            <div class="lesson">23 التعامل مع الملفات النصية</div>
-            
-            <div class="lesson">24 دالة الأرقام ( Range) </div>
-            <div class="lesson">25 دالة ord </div>
-            <div class="lesson">26 دالة chr</div>
-            <div class="lesson">27 دالة hex and oct</div>
-            <div class="lesson">28 شرح التحقق in and not in</div>
-          </div>
-        </div>
-
-        <!-- Level 4 -->
-        <div class="level card">
-          <h3>المستوى الرابع — البرمجة كائنية التوجه</h3>
-          <div class="lessons">
-            <div class="lesson">01 ما هي البرمجة الكائنية</div>
-            <div class="lesson">02 الكائنات (Objects)</div>
-            <div class="lesson">03 الخصائص والكلاسات</div>
-            <div class="lesson">04 الدوال (methods)</div>
-            <div class="lesson">05 كلمة self</div>
-            <div class="lesson">06 الوراثة (inheritance)</div>
-            <div class="lesson">07 إضافة خصائص جديدة للكلاسات</div>
-            <div class="lesson">08 التغليف (encapsulation)</div>
-            <div class="lesson">09 setter و getter</div>
-            <div class="lesson">10 التجريد (abstraction)</div>
-            <div class="lesson">11 الدالة __init__</div>
-            <div class="lesson">13 شرح دالة getattr'</div>
-            <div class="lesson">14 شرح delattr</div>
-            <div class="lesson">15 شرح انشء كلاسات متداخلة Inner classes</div>
-          </div>
-        </div>
-
-        <!-- Level 5 -->
-        <div class="level card">
-          <h3>المستوى الخامس — التطبيقات الأمنية المتقدمة</h3>
-          <div class="lessons">
-            <div class="lesson">01 مقدمة للمستوى الحالي</div>
-            <div class="lesson">02 تشفير النصوص وعمليات الهاش</div>
-            <div class="lesson">03 هاش القوائم</div>
-            <div class="lesson">04 فك التشفير باستخدام قوائم الكلمات</div>
-            <div class="lesson">05 فك التشفير باستخدام كلمات عشوائية</div>
-            <div class="lesson">06 مكتبة binascii</div>
-            <div class="lesson">07 مكتبة base64</div>
-            <div class="lesson">08 دالة padding باستخدام lambda</div>
-            <div class="lesson">09 مكتبة pycryptodome</div>
-            <div class="lesson">10 وضع CBC في التشفير</div>
-            <div class="lesson">11 تشفير البيانات من ملف</div>
-            <div class="lesson">12 تشفير الملفات</div>
-            <div class="lesson">13 تشفير الملفات - جزء متقدم</div>
-            <div class="lesson">14 مكتبة argsparser</div>
-            <div class="lesson">15 إنشاء أداة لتحميل الصور من الويب</div>
-            <div class="lesson">16 أساسيات الـ socket</div>
-            <div class="lesson">17 إنشاء backdoor متقدم - الجزء الأول</div>
-            <div class="lesson">18 إنشاء backdoor متقدم - الجزء الثاني</div>
-            <div class="lesson">19 اختبار الطلاب لدروس الـ backdoor</div>
-            <div class="lesson">20 إنشاء أداة مسح المنافذ</div>
-            <div class="lesson">21 أداة مسح المنافذ - جزء متقدم</div>
-            <div class="lesson">22 اختبار الطلاب لدروس مسح المنافذ</div>
-            <div class="lesson">23 الزحف على الويب (web scraping)</div>
-            <div class="lesson">24 إنشاء أداة اكتشاف ثغرات XSS</div>
-            <div class="lesson">25 ما هي API وكيفية استخدامها</div>
-            <div class="lesson">26 جمع معلومات الجهاز باستخدام سكربت بايثون و Telegram API</div>
-            <div class="lesson">27 كيفية برمجة keylogger باستخدام بايثون</div>
-            <div class="lesson">28 Regex بايثون</div>
-            <div class="lesson">29 كيفية برمجة IDS باستخدام بايثون</div>
-            <div class="lesson">30 كيفية برمجة FIM باستخدام بايثون</div>
-            <div class="lesson">31 كيفية برمجة SMP باستخدام بايثون</div>
-            <div class="lesson">32 Python 7z Integration & Archive Automation <التعامل مع البرامج الخارجية بستخدام بايثون مثل برنامج 7z والتعامل مع الملفات المضغوطة></div>
-            <div class="lesson">33 Password Cracking Challenge – ZIP Test< اختبار للحلقة السابقة وانشاء اداة تخمين كلمات مرور الملفات المضغوطة ></div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-    <section style="margin-top:20px" id="side-lessons">
-  <h2>الدروس الجانبية</h2>
-  <p style="color:var(--muted);margin-bottom:12px">
-    دروس إضافية داعمة للطالب، تساعدك تفهم المجال بصورة أعمق وتسد الفجوات العملية.
-  </p>
-  <div class="card">
-      <h3>SQL & قواعد البيانات</h3>
-      <p class="muted">
-        أساسيات SQL مع فهم الأخطاء الأمنية الشائعة.
-      </p>
-    </div>
-  <div class="card">
-      <h3>دورة اختبار الأختراق</h3>
-      <p class="muted">
-        دورة اختبار الأختراق واكتشاف الثغرات وعمل هجومات
-      </p>
+<section id="path">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">course_roadmap</span>
+      <h2>مسار واحد، من الصفر للاحتراف الأمني</h2>
+      <p>كل مستوى مبني على الذي قبله. تضغط على أي مستوى تشوف تفاصيل الدروس بالكامل.</p>
     </div>
 
-<!--
-  <div class="grid-three">
-    <div class="card">
-      <h3>أساسيات Linux للأمن السيبراني</h3>
-      <p class="muted">
-        شرح عملي لنظام Linux، الأوامر الأساسية، إدارة الملفات، والصلاحيات.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Git & GitHub</h3>
-      <p class="muted">
-        تعلم إدارة الأكواد، رفع المشاريع، والعمل بطريقة احترافية.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Networking عملي</h3>
-      <p class="muted">
-        TCP/IP، Ports، DNS، HTTP مع تطبيقات أمنية حقيقية.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Web Fundamentals</h3>
-      <p class="muted">
-        HTML, CSS, JavaScript لفهم بنية مواقع الويب قبل اختبارها أمنياً.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>مسار Red Team & Blue Team</h3>
-      <p class="muted">
-        شرح الفرق بين الهجوم والدفاع مع أمثلة واقعية.
-      </p>
-    </div>
+    <div class="tracks reveal" id="tracksContainer"></div>
   </div>
-
--->
 </section>
 
-    <section style="margin-top:20px" id="features">
-      <h2>لماذا هذه الدورة؟</h2>
-      <div class="grid-three">
-        <div class="card">
-          <h3>موجهة للمبتدئين والمحترفين</h3>
-          <p class="muted">تركيز قوي على التطبيق العملي، ودروس متابعة مباشرة عند الحاجة.</p>
+<section id="why">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">why_this_course</span>
+      <h2>ليش هذا المعسكر مختلف</h2>
+    </div>
+    <div class="features reveal">
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.3 11l9.4-4"/><path d="M7.3 13l9.4 4"/><path d="M19 8.5v7"/></svg>
         </div>
-        <div class="card">
-          <h3>اختبار بعد كل درس</h3>
-          <p class="muted">اختبار لكل درس حرفين حتى المقدمة الخاصة بكل مستوى عليها اختبار حتى تعرف مدة فهمك للشي الي درسته</p>
-        </div>
-        <div class="card">
-          <h3>اختبار في كل مستوى للأنتقال للمستوى التالي</h3>
-          <p class="muted">الدورة مكونة من 5 مستويات اساسية وحتى تنتقل من المستوى الي انت بي للمستوى التالي لازم تشتاز الأختبار الخاص بالمستوى الحالي وهذا الأختبار يختلف عن اختبارات الدروس نفسها</p>
-        </div>
-        <div class="card">
-          <h3>شهادة عند الانتهاء</h3>
-          <p class="muted">تحصل على شهادة تغطي كل المستويات عند إتمام الدورة.</p>
-        </div>
-        <div class="card">
-          <h3>دعم فني مباشر</h3>
-          <p class="muted">دعم للإجابة على استفساراتك ومتابعة تقدمك.</p>
-        </div>
-        <div class="card">
-          <h3>وصول كامل للمحتوى</h3>
-          <p class="muted">عندك  امكانية الوصول الكامل للدروس حتى بعد الأنتهاء منها يعني الدروس ما راح تنحذف من عندك ولا راح تنطرد منها وتكدر ترجع لأي درس بأي وقت تحب</p>
-        </div>
+        <h3>أساس قوي وحقيقي في الشبكات</h3>
+        <p>تتعلم أساسيات الشبكات عملياً: الأجهزة، الربط، البروتوكولات، وPacket Tracer حتى تفهم كيف تتحرك البيانات قبل الدخول للبرمجة والأمن السيبراني.</p>
       </div>
-    </section>
-
-    <section style="margin-top:20px" id="pricing">
-      <h2>التسعير</h2>
-      <div class="card">
-        <p>سعر العرض الحالي: <strong>$200</strong> <span class="old">$350</span></p>
-        <div class="iqd-price">
-          <span class="current">300,000 دينار عراقي</span>
-          <span class="old">525,000</span>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5 4 8 8 10 4-2 8-5 8-10V6l-8-4z"/></svg>
         </div>
-        <ul>
-          <li>5 مستويات متكاملة</li>
-          <li>80+ درس عملي</li>
-          <li>وصول مدى الحياة للمحتوى</li>
-          <li>دعم فني مباشر + شهادات</li>
-        </ul>
+        <h3>أساس حقيقي قبل القفز للأمن السيبراني</h3>
+        <p>قبل لا تكتب سطر كود، تتعلم كيف يعمل الكمبيوتر فعلياً — هاردوير، ويندوز، شبكات، صلاحيات. أساس نادر تلقاه بدورة عربية واحدة.</p>
       </div>
-    </section>
-
-    <section style="margin-top:20px" id="faq">
-      <h2>أسئلة متكررة</h2>
-      <div class="accordion">
-        <div class="acc-item">
-          <div class="acc-head">لماذا اتعلم C++ وJava وبعدها بايثون؟ لماذا لا أدخل إلى بايثون مباشرة؟ <span>+</span></div>
-          <div class="acc-body">
-            <p>شوفوا شباب، سؤال جيد: ليش مسار كورس الـ Programming Security بدأ بـ C++، بعدين Java، وبعدين Python؟ خل أحچي لكم خطوة خطوة:</p>
-            
-            <p><strong>1. C++ — الأساس العميق للكمبيوتر</strong></p>
-            <p>في البداية تعلمنا C++ لأنها تعلمنا كيف الكمبيوتر يفكر من الداخل.</p>
-            <p>شنو يعني؟ يعني تتعلمون كيف الذاكرة تدار، شنو هي المؤشرات (Pointers) وكيف نقدر نتحكم بالمتغيرات والبيانات بشكل دقيق.</p>
-            <p>ليش هذا مهم بالأمن السيبراني؟ لأن أغلب الثغرات مثل Buffer Overflow وMemory Leaks تصير بسبب سوء فهمنا للذاكرة.</p>
-            <p>C++ تخليك تعرف العمليات الحسابية والمنطقية تعمل شلون بالكمبيوتر، وكيف الهياكل (Structs) والدوال (Functions) تتفاعل مع الذاكرة.</p>
-            <p>باختصار: C++ تعلمك الجذر الحقيقي لكل برنامج وكيف الكمبيوتر ينفذ الكود خطوة خطوة.</p>
-            
-            <p><strong>2. Java — البرمجة المنظمة بدون تعقيدات الذاكرة</strong></p>
-            <p>بعد ما فهمنا الأساسيات بالـ C++، ننتقل لـ Java.</p>
-            <p>Java تعلمنا كتابة برامج منظمة ومرتبة بدون ما نقلق على إدارة الذاكرة مباشرة، لأن الـ Garbage Collector يهتم بالذاكرة.</p>
-            <p>الهدف من Java هو التعود على كتابة كود نظيف ومنظم، والتعامل مع المتغيرات والكلاسات بطريقة واضحة.</p>
-            <p>هذا المستوى يجهزنا قبل ما نطبق OOP عملياً، بحيث لما ننتقل لـ Python نركز على المفاهيم وليس التفاصيل الداخلية للكمبيوتر.</p>
-            
-            <p><strong>3. Python — التطبيق العملي + البرمجة الكائنية (OOP)</strong></p>
-            <p>أخيراً نجي لـ Python.</p>
-            <p>Python سهلة وسريعة، وهنا نبدأ بتطبيق OOP: الكائنات، الخصائص، الدوال، الوراثة، التغليف والتجريد.</p>
-            <p>بما أننا فهمنا الأساسيات بـ C++ وJava، صرنا نعرف ليش الكود يشتغل هيجي أو ليش بعض الأمور تؤثر بالأداء أو الأمان.</p>
-            <p>Python هنا راح تكون لغة التطبيقات العملية: نكتب أدوات الأمن السيبراني، تحليل البيانات، التشفير، وأدوات الاختراق الأخلاقي.</p>
-            <p>يعني Python = التطبيق العملي، C++ = الفهم العميق، Java = كتابة كود منظم.</p>
-            
-            <p><strong>الخلاصة</strong></p>
-            <p>C++ = الأساس العميق للكمبيوتر والذاكرة.</p>
-            <p>Java = تعلم كتابة برامج منظمة بطريقة واضحة.</p>
-            <p>Python = تعلم OOP + تطبيق أدوات الأمن السيبراني عملياً.</p>
-          </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
         </div>
-        
-        <div class="acc-item">
-          <div class="acc-head">ما دخل البرمجة في مجال الأمن السيبراني؟ <span>+</span></div>
-          <div class="acc-body">
-            <p>شوفوا شباب، هواي طلاب يسألون: شنو دخل البرمجة بمجال الأمن السيبراني؟ ليش ندرس لغات برمجة وإحنا أصلاً نريد نشتغل بالـ Security؟</p>
-            
-            <p><strong>الجواب بسيط: البرمجة هي سلاح الهاكر.</strong></p>
-            
-            <p>أول شي، الهجمات والثغرات مو جاية من الفضاء، كلها مبنية على أخطاء مبرمجين. إذا إنت ما تعرف شلون المبرمج يكتب كود، ما رح تگدر تفتهم وين الخطأ حتى تستغله أو تصلحه.</p>
-            
-            <p>مثلاً: ثغرة الـ Buffer Overflow تصير لأن المبرمج ما سيطر على حجم البيانات بالذاكرة. إذا إنت فاهم C++، رح تفتهم ليش تصير هاي المشكلة وشلون ممكن تنسد.</p>
-            
-            <p>ثاني شي، أنت كـ مختص بالأمن ما يكفي بس تعرف أدوات جاهزة، مرات لازم تكتب أداة خاصة بيك:</p>
-            <ul>
-              <li>أداة لمسح منافذ (Port Scanner)</li>
-              <li>سكربت لفحص كلمات مرور</li>
-              <li>برنامج لتشفير أو فك تشفير بيانات</li>
-            </ul>
-            
-            <p>كل هاي الأمور تحتاج برمجة، واللي يفتهم برمجة يكون أقوى من اللي يعتمد على أدوات غيره.</p>
-            
-            <p>يعني باختصار: البرمجة تخليك مو بس مستخدم أدوات، تخليك صانع أدوات، وتخليك تفهم جذور الثغرات الأمنية. وهاي ميزة أي شخص يريد ينجح بمجال السيكيورتي لازم تكون عنده.</p>
-          </div>
-        </div>
-        
-        <div class="acc-item">
-          <div class="acc-head">هل أحتاج إلى خبرة سابقة في البرمجة؟ <span>+</span></div>
-          <div class="acc-body">لا، الدورة مصممة لتكون مناسبة للمبتدئين تماماً. نبدأ من الصفر (كيفية تثبيت الأدوات، أساسيات البرمجة) ونتدرج معك خطوة بخطوة حتى المستويات المتقدمة.</div>
-        </div>
-        
-        <div class="acc-item">
-          <div class="acc-head">كم ساعة يجب أن أدرس يومياً؟ <span>+</span></div>
-          <div class="acc-body">نوصي بـ 1-2 ساعات يومياً أو 10 ساعات أسبوعياً للحصول على أفضل نتائج واستيعاب المحتوى بشكل مريح. الدروس مقسمة إلى أجزاء صغيرة لتسهيل المتابعة.</div>
-        </div>
-        
-        <div class="acc-item">
-          <div class="acc-head">هل يمكنني الحصول على الدعم بعد انتهاء الدورة؟<span>+</span></div>
-          <div class="acc-body">نعم، يمكنك الوصول إلى المحتوى مدى الحياة، كما أن قناة التليجرام مخصصة للدعم المستمر والإجابة على أسئلة الخريجين حتى بعد إكمال الدورة.</div>
-        </div>
-        
-        <div class="acc-item">
-          <div class="acc-head">ماذا عن تحديثات المحتوى؟<span>+</span></div>
-          <div class="acc-body">نقوم بتحديث المحتوى دورياً لإضافة تقنيات جديدة أو مواضيع مطورة. جميع التحديثات مجانية ومتاحة لحاملي الدورة.</div>
-        </div>
-        
-        <div class="acc-item">
-          <div class="acc-head">هل الشهادة معتمدة؟<span>+</span></div>
-          <div class="acc-body">الشهادة تثبت إتمامك لـ 5 مستويات في البرمجة والأمن السيبراني، وهي مفيدة للسيرة الذاتية وإثبات المهارة للمستقبل الوظيفي أو المشاريع الشخصية.</div>
-        </div>
-        
-        <div class="acc-item">
-          <div class="acc-head">كيف أتواصل مع المدرب؟ <span>+</span></div>
-          <div class="acc-body">يمكنك التواصل عبر روابط التواصل في اخر الموقع</div>
-        </div>
-        <div class="acc-item">
-          <div class="acc-head">هل الدورة مناسبة للمبتدئين؟ <span>+</span></div>
-          <div class="acc-body">نعم، تبدأ الدورة من أساسيات لغات البرمجة وتصل إلى تطبيقات أمنية متقدمة.</div>
-        </div>
-        <div class="acc-item">
-          <div class="acc-head">هل هذا المساق قانوني؟ <span>+</span></div>
-          <div class="acc-body">المحتوى تعليمي. يُعدُّ استخدام الأدوات على أنظمة دون إذن نشاطًا غير قانوني. نحن نعلّم لأغراض تعليمية وأمنية فقط.</div>
-        </div>
-        <div class="acc-item">
-          <div class="acc-head">هل يمكنني استرجاع اموالي ؟<span>+</span></div>
-          <div class="acc-body">يمكنك استرجاع الأموال بعد الأشتراك ب ساعة واحد وبعد الساعة لا يمكن لأن المستوى الأول كله عبارة عن ساعة و20 دقيقة تقريبا ف انت يمكنك مشاهدة المستوى الأول كامل تقريباً وبعدها تقرر الأستمرار ام التوقف وعدا ذلك نحن نعتذر لا يمكن استرداد المبلغ</div>
-        </div>
+        <h3>ثلاث لغات، عقلية برمجية واحدة</h3>
+        <p>++C يبني فيك المنطق والذاكرة، Java يعلمك البرمجة المنظمة، وبايثون يفتح لك باب الأمن السيبراني. كل لغة بسبب فعلي مو حشو.</p>
       </div>
-    </section>
-
-    <section style="margin-top:20px" id="contact">
-      <h2>تواصل معنا</h2>
-      <div class="card" style="display:flex;flex-direction:column;gap:10px">
-        <p>لديك استفسار أو تحتاج مساعدة؟ تواصل معنا مباشرة عبر:</p>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <a class="btn" href="https://www.tiktok.com/@pr_mh">تيك توك</a>
-          <a class="btn" href="https://t.me/lw_w7">تليكرام</a>
-          <a class="btn" href="https://www.instagram.com/lw__w6/">إنستغرام</a>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
         </div>
-        <p style="color:var(--muted);font-size:14px;margin-top:6px">عند الضغط على أي رابط سيتم التحويل إلى الصفحة الخارجية.</p>
+        <h3>تطبيق فعلي لا حفظ نظري</h3>
+        <p>تبرمج أدواتك بنفسك: فاحص منافذ، أداة تشفير ملفات، IDS، FIM، وأدوات تعليمية أخرى — كل شي بنود من المنهج موجود فوق بالتفصيل.</p>
       </div>
-    </section>
-
-    <footer>
-      <div>© 2025 Programming Security — جميع الحقوق محفوظة</div>
-      <div class="socials">
-        تواصل معنا:
-        <a href="https://www.tiktok.com/@pr.mohammed_hamza">تيك توك</a>
-        <a href="https://t.me/lw_w7">تليكرام</a>
-        <a href="https://www.instagram.com/lw__w6/">إنستغرام</a>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        </div>
+        <h3>قواعد بيانات وأمان من جذورها</h3>
+        <p>مستوى كامل بـSQLite يشرح حتى ثغرات SQL Injection وكيف تسكرها — فهم عملي للهجوم والدفاع معاً.</p>
       </div>
-    </footer>
+    </div>
   </div>
+</section>
 
-  <script>
-    // accordion
-    document.querySelectorAll('.acc-head').forEach(h=>{
-      h.addEventListener('click',()=>{
-        const body = h.nextElementSibling;
-        const open = body.style.display === 'block';
-        document.querySelectorAll('.acc-body').forEach(b=>b.style.display='none');
-        if(!open) body.style.display = 'block';
-      });
-    });
-  </script>
+<section id="pricing">
+  <div class="container">
+    <div class="section-head reveal" style="margin-inline:auto; text-align:center;">
+      <span class="eyebrow">enrollment</span>
+      <h2>سعر واحد، كل المستويات</h2>
+      <p style="margin-inline:auto;">وصول كامل لجميع المستويات والدروس الجانبية المتوفرة حالياً، بدون رسوم إضافية لاحقة.</p>
+    </div>
+    <div class="pricing-card reveal">
+      <div class="p-eyebrow">// FULL ACCESS PASS</div>
+      <div class="price-row">
+        <span class="price-usd">$200</span>
+      </div>
+      <div class="price-iqd">≈ 300,000 د.ع تقريباً</div>
+      <ul>
+        <li><span class="check">✓</span> كل المستويات من المرحلة التأهيلية الى اخر مستوى</li>
+        <li><span class="check">✓</span> الدروس الجانبية الداعمة</li>
+        <li><span class="check">✓</span> دورة اختبار الاختراق (قيد الإكمال حالياً)</li>
+        <li><span class="check">✓</span> شرح كامل بالعربي خطوة بخطوة</li>
+      </ul>
+      <a href="https://mohammedhamzapr.github.io/personal/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">تواصل وياي الآن</a>
+      <div class="pricing-note">* دورة اختبار الاختراق غير مكتملة حالياً وتُستكمل تدريجياً ضمن وصولك للأكاديمية</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="brand-name">
+      <span style="display:flex; align-items:center; gap:8px;">
+        <img src="logo.jpg" alt="" style="width:24px;height:24px;border-radius:6px;">
+        Programming &amp; Security
+      </span>
+    </div>
+    <p>معسكر تدريبي عربي — برمجة وأمن سيبراني من الصفر للاحتراف</p>
+  </div>
+</footer>
+
+<script>
+const courseData = [
+  {
+    title: "المرحلة التأهيلية",
+    sub: "استخدام الحاسوب — قبل أي سطر كود",
+    optional:false,
+    lessons: ["الهاردوير والسوفتوير ونظام التشغيل","الفرق بين الكيس واللابتوب والسيرفر وشرح الكيبورد","الكمبيوتر وكيف يعمل وأهمية كل قطعة (مختصر A+)","مقدمة عن نظام تشغيل ويندوز","طريقة استخدام نظام ويندوز","التعامل مع المجلدات والملفات","المتصفح","حذف وتثبيت والبحث عن البرامج","الإعدادات الأساسية لنظام التشغيل","إدارة المستخدمين والصلاحيات","لوحة التحكم","أساسيات الشبكات","مدير المهام","الحماية","مصطلحات 1، 2، 3","التشفير وأهميته","نظم الحاسوب (1 0)","مجلد بدء التشغيل","ماذا بعد"]
+  },
+  {
+    title: "المستوى الأول",
+    sub: "اساسيات الشبكات وربطها",
+    optional:false,
+    lessons: ["ما هي الشبكات","تجهيز بيئة العمل","شرح واجهة تطبيق Packet Tracer","انواع الشبكات","من ماذا تتكون الشبكة","بروتوكول الأنترنت","شرح جاهز Hub","شرح جهاز Switch","شرح جهاز Router","شرح اهم 3 بروتوكولات","شرح DNS","انشاء شبكة شخصية PAN","انشاء شبكة محلية LAN","انشاء شبكة محلية بستخدام Router",]
+  },
+  {
+    title: "المستوى الثاني",
+    sub: "أساسيات ++C",
+    optional:false,
+    lessons: ["مقدمة إلى ++C","إعداد بيئة العمل وتثبيت Compiler وIDE","أول برنامج وأمر الطباعة cout","المتغيرات (variables)","حقول الإدخال cin","العمليات الحسابية (Operators)","التعاليق (comments)","الشروط (Conditions)","حلقات التكرار (Loops)","القوائم (Arrays)","الدوال (functions)","المؤشرات (Pointers)","المراجع (References)","الهياكل (Struct)","مشروع نهائي صغير","ما التالي"]
+  },
+  {
+    title: "المستوى الثالث",
+    sub: "أساسيات لغة Java",
+    optional:true,
+    lessons: ["مقدمة إلى Java","إعداد بيئة العمل (JDK & IDE)","أول برنامج في Java","المتغيرات (variables)","حقول الإدخال (Scanner)","العمليات (حسابية، منطقية، مقارنة)","التعاليق (comments)","الشروط (Conditions)","حلقات التكرار (Loops)","القوائم (Arrays)","الدوال (functions)","النصوص (Strings)","مكتبة الرياضيات والقيم العشوائية","اصطياد الأخطاء (Exception Handling)","التعامل مع الملفات الخارجية","ما التالي"]
+  },
+  {
+    title: "المستوى الرابع",
+    sub: "أساسيات لغة Python",
+    optional:false,
+    lessons: ["مقدمة إلى بايثون","إعداد بيئة بايثون وVS Code","أمر الطباعة (print)","إدخال البيانات (input)","المتغيرات (variables)","التعليقات (comments)","العمليات الحسابية","النصوص (strings)","القواميس (dict)","القوائم (lists)","المجموعات (set)","التوبلات (tuple)","القيم المنطقية (boolean)","تحويل أنواع البيانات","جمل الشرط (if)","جمل match و case","حلقة while","حلقة for","الدوال (functions)","الدوال اللامية (lambda)","المكتبات (libraries)","معالجة الأخطاء (try/except)","التعامل مع الملفات النصية","دالة range","دالة ord","دالة chr","دالة hex و oct","شرح in و not in"]
+  },
+  {
+    title: "المستوى الخامس",
+    sub: "البرمجة كائنية التوجه (OOP)",
+    optional:false,
+    lessons: ["ما هي البرمجة الكائنية","الكائنات (Objects)","الخصائص والكلاسات","الدوال (methods)","كلمة self","الوراثة (inheritance)","إضافة خصائص جديدة للكلاسات","التغليف (encapsulation)","setter و getter","التجريد (abstraction)","الدالة __init__","شرح دالة getattr","شرح delattr","إنشاء كلاسات متداخلة (Inner classes)"]
+  },
+  {
+    title: "المستوى السادس",
+    sub: "Python Security Tools Development",
+    optional:false,
+    lessons: ["مقدمة للمستوى الحالي","تشفير النصوص وعمليات الهاش","هاش القوائم","فك التشفير باستخدام قوائم الكلمات","فك التشفير باستخدام كلمات عشوائية","مكتبة binascii","مكتبة base64","دالة padding باستخدام lambda","مكتبة pycryptodome","وضع CBC في التشفير","تشفير البيانات من ملف","تشفير الملفات (أساسي ومتقدم)","مكتبة argparse","إنشاء أداة لتحميل الصور من الويب","أساسيات الـsocket","إنشاء backdoor تعليمي — جزء 1 و2","اختبار الطلاب لدروس backdoor","إنشاء أداة مسح المنافذ (أساسي ومتقدم)","اختبار الطلاب لدروس مسح المنافذ","الزحف على الويب (web scraping)","أداة اكتشاف ثغرات XSS","ما هي API وكيفية استخدامها","جمع معلومات الجهاز عبر Telegram API","برمجة keylogger تعليمي","Regex بايثون","برمجة IDS","برمجة FIM","برمجة SMP","التعامل مع 7z وأرشفة الملفات","تحدي: أداة تخمين كلمات مرور ZIP"]
+  },
+  {
+    title: "المستوى السابع",
+    sub: "SQLite — قواعد البيانات",
+    optional:true,
+    lessons: ["مقدمة عن SQL","تجهيز بيئة العمل والاتصال بقواعد البيانات","شرح وإنشاء cursor","إنشاء table","إضافة عامود جديد وتحديد قيمة تلقائية","حذف عامود بالكامل","إضافة بيانات وغلق ثغرة SQL Injection","دالة إنشاء عامود بقيم فريدة وتلقائية","تحديث البيانات في العواميد","إحضار المعلومات من القاعدة وبناء شروط","إضافة بيانات متعددة دفعة واحدة","إضافة صور إلى قاعدة البيانات","استعراض أسماء الجداول الموجودة","عرض المعلومات بالترتيب وفهم fetchmany","إضافة عامود تواريخ"]
+  },
+  {
+    title: "المستوى الثامن",
+    sub: "Penetration Testing - دورة اختبار الأختراق",
+    optional:true,
+    lessons: ["اختبار الاختراق واكتشاف الثغرات","عمل هجومات تعليمية ضمن بيئة تحكم","ملاحظة: هذه الدورة غير مكتملة حالياً وتُستكمل تدريجياً"]
+  }
+];
+
+const container = document.getElementById('tracksContainer');
+courseData.forEach((track, idx) => {
+  const el = document.createElement('div');
+  el.className = 'track' + (track.optional ? ' optional' : '');
+  el.innerHTML = `
+    <div class="track-head" data-idx="${idx}">
+      <div class="track-step">${String(idx+1).padStart(2,'0')}</div>
+      <div class="track-info">
+        <div class="t-title">${track.title} ${track.optional ? '<span class="badge-optional">اختياري</span>' : ''}</div>
+        <div class="t-sub">${track.sub}</div>
+      </div>
+      <div class="track-count">${track.lessons.length} درس</div>
+      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="track-body">
+      <div class="track-body-inner">
+        <div class="lesson-grid">
+          ${track.lessons.map((l,i)=>`<div class="lesson"><span class="ln">${String(i+1).padStart(2,'0')}</span><span>${l}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+  container.appendChild(el);
+});
+
+container.addEventListener('click', (e) => {
+  const head = e.target.closest('.track-head');
+  if(!head) return;
+  const track = head.closest('.track');
+  const body = track.querySelector('.track-body');
+  const isOpen = track.classList.contains('open');
+  if(isOpen){
+    body.style.maxHeight = 0;
+    track.classList.remove('open');
+  } else {
+    track.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
+});
+
+// reveal on scroll
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+},{threshold:0.12});
+revealEls.forEach(el=>io.observe(el));
+</script>
+
 </body>
 </html>
